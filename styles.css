@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+header {
+    padding: 20px;
+    background-color: rgba(243, 243, 243, 0.5);
+    text-align: right;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+
+footer {
+    padding: 20px;
+    background-color: #FDD876;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.footer-content {
+    margin: 10px 0;
+}
+
+.reset-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    header, footer {
+        padding: 10px;
+    }
+    .footer-content {
+        font-size: 14px;
+    }
+}
