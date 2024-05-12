@@ -4,54 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QRコードベースのARデモ</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="js/aframe.min.js"></script>
     <script src="js/mindar-image.prod.js"></script>
     <script src="js/mindar-image-aframe.prod.js"></script>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            overflow: hidden; /* スクロールバーを隠す */
-        }
-        header {
-            padding: 20px;
-            background-color: rgba(243, 243, 243, 0.5); /* 背景色に透過度を設定 */
-            text-align: right;
-            position: absolute; /* ARコンテンツに重ねるための設定 */
-            width: 100%; /* 画面いっぱいの幅 */
-            z-index: 1000; /* コンテンツの上に表示 */
-        }
-        footer {
-            padding: 20px;
-            background-color: #FDD876; /* フッターの背景色を変更 */
-            text-align: center;
-            position: absolute;
-            width: 100%;
-            bottom: 0; /* ページの下部に固定 */
-            z-index: 1000;
-        }
-        .footer-content {
-            margin: 10px 0;
-        }
-        /* レスポンシブデザインのためのメディアクエリ */
-        @media (max-width: 600px) {
-            header, footer {
-                padding: 10px;
-            }
-            .footer-content {
-                font-size: 14px;
-            }
-        }
-    </style>
 </head>
 <body>
 
 <header>
-    <a href="javascript:location.reload();"><img src="reset-icon.png" alt="リセット" style="width: 30px; height: 30px;"/></a>
+    <a href="javascript:location.reload();"><img src="reset-icon.png" alt="リセット" class="reset-icon"></a>
 </header>
 
 <main>
-    <!-- ここにARコードを挿入 -->
+    <!-- ARコンテンツ -->
     <a-scene mindar-image="imageTargetSrc: your-targets.mind" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <a-assets>
             <img id="target-image" src="your-target-image.jpg">
