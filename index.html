@@ -13,37 +13,38 @@
             font-family: Arial, sans-serif;
             overflow: hidden; /* スクロールバーを隠す */
         }
-        #loading {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: #fff url('loading.gif') no-repeat center center; /* ローディングGIF */
-            z-index: 1001;
-        }
-        header, footer {
-            position: absolute;
-            width: 100%;
-            z-index: 1000;
-        }
         header {
-            top: 0;
             padding: 20px;
-            background-color: rgba(243, 243, 243, 0.5);
+            background-color: rgba(243, 243, 243, 0.5); /* 背景色に透過度を設定 */
             text-align: right;
+            position: absolute; /* ARコンテンツに重ねるための設定 */
+            width: 100%; /* 画面いっぱいの幅 */
+            z-index: 1000; /* コンテンツの上に表示 */
         }
         footer {
-            bottom: 0;
             padding: 20px;
-            background-color: #FDD876;
+            background-color: #FDD876; /* フッターの背景色を変更 */
             text-align: center;
+            position: absolute;
+            width: 100%;
+            bottom: 0; /* ページの下部に固定 */
+            z-index: 1000;
+        }
+        .footer-content {
+            margin: 10px 0;
+        }
+        /* レスポンシブデザインのためのメディアクエリ */
+        @media (max-width: 600px) {
+            header, footer {
+                padding: 10px;
+            }
+            .footer-content {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-
-<div id="loading"></div>
 
 <header>
     <a href="javascript:location.reload();"><img src="reset-icon.png" alt="リセット" style="width: 30px; height: 30px;"/></a>
@@ -51,6 +52,16 @@
 
 <main>
     <!-- ここにARコードを挿入 -->
+    <a-scene mindar-image="imageTargetSrc: your-targets.mind" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <img id="target-image" src="your-target-image.jpg">
+            <a-asset-item id="model_glb" src="toryon3.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-entity gltf-model="#model_glb" position="0 0 0" scale="10 10 10"></a-entity>
+        </a-entity>
+    </a-scene>
 </main>
 
 <footer>
@@ -58,13 +69,6 @@
     <div class="footer-content">住所: あなたの会社の住所</div>
     <div class="footer-content">連絡先: info@yourcompany.com</div>
 </footer>
-
-<script>
-// ページが完全に読み込まれた後にローディングアニメーションを非表示にする
-window.onload = function() {
-    document.getElementById('loading').style.display = 'none';
-}
-</script>
 
 </body>
 </html>
