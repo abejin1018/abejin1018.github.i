@@ -10,20 +10,29 @@
     <script src="js/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
-    <!-- ARシーンを定義 -->
-    <a-scene id='myAscene' mindar-image="imageTargetSrc: targets/your-targets.mind" embedded color-space='sRGB' 
-             renderer='colorManagement: true, physicallyCorrectLights' 
-             vr-mode-ui='enabled: false' device-orientation-permission-ui='enabled: false'>
-        
-        <!-- アセット定義 -->
-        <a-assets>
-            <a-asset-item id='01_mame' src='assets/models/toryon3.glb'></a-asset-item>
-        </a-assets>
-        
-        <!-- 画像認識ターゲットと3Dモデル -->
-        <a-entity mindar-image-target='targetIndex: 0'>
-            <a-entity gltf-model='#01_mame' position='0 0 -1' scale='10 10 10'></a-entity>
-        </a-entity>
-    </a-scene>
+
+<header>
+    <!-- リセットアイコンの追加 -->
+    <a href="javascript:location.reload();">
+        <img src="assets/images/reset-icon.png" alt="リセット" class="reset-icon">
+    </a>
+</header>
+
+<!-- ARシーンを定義 -->
+<a-scene id='myAscene' mindar-image="imageTargetSrc: targets/your-targets.mind" embedded color-space='sRGB' 
+         renderer='colorManagement: true, physicallyCorrectLights' 
+         vr-mode-ui='enabled: false' device-orientation-permission-ui='enabled: false'>
+    
+    <!-- アセット定義 -->
+    <a-assets>
+        <a-asset-item id='01_mame' src='assets/models/toryon3.glb'></a-asset-item>
+    </a-assets>
+    
+    <!-- 画像認識ターゲットと3Dモデル -->
+    <a-entity mindar-image-target='targetIndex: 0'>
+        <a-entity gltf-model='#01_mame' position='0 0 -1' scale='10 10 10'></a-entity>
+    </a-entity>
+</a-scene>
+
 </body>
 </html>
