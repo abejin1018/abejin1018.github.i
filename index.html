@@ -2,37 +2,28 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QRコードベースのARデモ</title>
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>画像認識ベースのARデモ</title>
+    <!-- ローカルのJavaScriptファイルへのリンク -->
+    <script src="js/aframe.min.js"></script>
+    <script src="js/mindar-image.prod.js"></script>
+    <script src="js/mindar-image-aframe.prod.js"></script>
 </head>
 <body>
-
-<header>
-    <a href="javascript:location.reload();"><img src="assets/images/reset-icon.png" alt="リセット" class="reset-icon"></a>
-</header>
-
-<main>
-    <!-- ARコンテンツ -->
-    <a-scene mindar-image="imageTargetSrc: targets/your-targets.mind" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <!-- ARシーンを定義 -->
+    <a-scene id='myAscene' mindar-image="imageTargetSrc: targets/your-targets.mind" embedded color-space='sRGB' 
+             renderer='colorManagement: true, physicallyCorrectLights' 
+             vr-mode-ui='enabled: false' device-orientation-permission-ui='enabled: false'>
+        
+        <!-- アセット定義 -->
         <a-assets>
-            <img id="target-image" src="assets/images/your-target-image.jpg">
-            <a-asset-item id="model_glb" src="assets/models/toryon3.glb"></a-asset-item>
+            <a-asset-item id='01_mame' src='assets/models/toryon3.glb'></a-asset-item>
         </a-assets>
-
-        <a-entity mindar-image-target="targetIndex: 0">
-            <a-entity gltf-model="#model_glb" position="0 0 0" scale="10 10 10"></a-entity>
+        
+        <!-- 画像認識ターゲットと3Dモデル -->
+        <a-entity mindar-image-target='targetIndex: 0'>
+            <a-entity gltf-model='#01_mame' position='0 0 -1' scale='10 10 10'></a-entity>
         </a-entity>
     </a-scene>
-</main>
-
-<footer>
-    <div class="footer-content">会社名: あなたの会社</div>
-    <div class="footer-content">住所: あなたの会社の住所</div>
-    <div class="footer-content">連絡先: info@yourcompany.com</div>
-</footer>
-
 </body>
 </html>
